@@ -1,5 +1,6 @@
 package com.example.fc1_subbook;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
@@ -9,14 +10,22 @@ import android.widget.Button;
 
 import android.widget.EditText;
 
+import com.google.gson.Gson;
+
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class AddToListActivity extends AppCompatActivity {
+    private static final String FILENAME = "subs.sav";
     private Subscription newSub ;
     private ArrayList<Subscription> List;
-    private ArrayAdapter<Subscription> ad;
+    //private SubAdapter adapter;
 
 
     @Override
@@ -28,6 +37,7 @@ public class AddToListActivity extends AppCompatActivity {
         List = new ArrayList<Subscription>();
 
         Button OkButton = (Button) findViewById(R.id.ok);
+        //adapter = new SubAdapter(getApplicationContext(), R.layout.row_view, List);
 
         OkButton.setOnClickListener(new View.OnClickListener() {
 
@@ -53,11 +63,9 @@ public class AddToListActivity extends AppCompatActivity {
                 //create new subsciption
                 Subscription newSub = new Subscription(name, date, bill, comment);
 
-                //List.add(newSub);
 
                 //passing object to another activity from http://hmkcode.com/android-passing-java-object-another-activity/
-                intent.putExtra("newSub", (Serializable) newSub);
-
+                intent.putExtra("newSub", newSub);
 
                 startActivity(intent);
             }
@@ -67,4 +75,6 @@ public class AddToListActivity extends AppCompatActivity {
 
 
     }
+
+
 }

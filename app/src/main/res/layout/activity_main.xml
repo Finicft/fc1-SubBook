@@ -7,97 +7,26 @@
     tools:context="com.example.fc1_subbook.MainActivity">
 
 
-    <EditText
-        android:id="@+id/enterName"
-        android:layout_width="0dp"
-        android:layout_height="47dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="@string/EnterName"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/enterDate"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/subList" />
-
-    <EditText
-        android:id="@+id/enterDate"
-        android:layout_width="0dp"
-        android:layout_height="47dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:ems="10"
-        android:hint="@string/enterDate"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/enterBill"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enterName" />
-
-    <EditText
-        android:id="@+id/enterBill"
-        android:layout_width="0dp"
-        android:layout_height="47dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="@string/enterBill"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/enterComment"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enterDate" />
-
     <Button
         android:id="@+id/Add"
         android:layout_width="368dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
         android:text="@string/Add"
-        app:layout_constraintTop_toBottomOf="@+id/enterComment"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subList" />
 
     <ListView
         android:id="@+id/subList"
         android:layout_width="360dp"
-        android:layout_height="151dp"
+        android:layout_height="408dp"
         android:layout_marginTop="28dp"
-        app:layout_constraintBottom_toTopOf="@+id/enterName"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/enterComment"
-        android:layout_width="0dp"
-        android:layout_height="47dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="@string/enterComment"
-        android:inputType="textShortMessage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enterBill"
-        app:layout_constraintBottom_toTopOf="@+id/Add"/>
 
 </android.support.constraint.ConstraintLayout>

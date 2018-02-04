@@ -31,11 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView OldList;
     private ArrayList<Subscription> subList;
     private SubAdapter adapter;
-    private Subscription newSub;
-
-    private ArrayList<String> names;
-    private ArrayAdapter<String> nameAdapter;
-
+    //private Subscription newSub;
 
 
 
@@ -50,27 +46,18 @@ public class MainActivity extends AppCompatActivity {
         adapter = new SubAdapter(getApplicationContext(), R.layout.row_view, subList);
         OldList.setAdapter(adapter);
 
+
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditText ETname = findViewById(R.id.enterName);
-                EditText ETdate = findViewById(R.id.enterDate);
-                EditText ETbill = findViewById(R.id.enterBill);
-                EditText ETcomment = findViewById(R.id.enterComment);
-
-                String name = ETname.getText().toString();
-                String date = ETdate.getText().toString();
-                String bill = ETbill.getText().toString();
-                String comment = ETcomment.getText().toString();
-
-                Subscription newSub = new Subscription(name, date, bill, comment);
-                subList.add(newSub);
-
-                adapter.notifyDataSetChanged();
-                saveInFile();
+                Intent intent = new Intent(MainActivity.this, AddToListActivity.class);
+                startActivity(intent);
+                
 
             }
         });
+
+
 
 
     }
@@ -82,19 +69,21 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
 
         loadFromFile();
+        Intent addIntent = getIntent();
+        Bundle bundle = addIntent.getExtras();
+        if(bundle != null){
+            Subscription newSub = (Subscription) bundle.get("newSub");
+            subList.add(newSub);
+            adapter.notifyDataSetChanged();
 
+        }
+        saveInFile();
         adapter = new SubAdapter(getApplicationContext(), R.layout.row_view, subList);
         OldList.setAdapter(adapter);
 
 
     }
 
-    public void AddToList (View view){
-        //Intent addIntent = getIntent();
-        //Subscription newSub =   (Subscription) addIntent.getSerializableExtra("newSub");
-        //subList.add(newSub);
-
-    }
 
     private void loadFromFile() {
 
@@ -128,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
             Gson gson = new Gson();
             gson.toJson(subList, out);
             out.flush();
-
 
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
