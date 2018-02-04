@@ -47,26 +47,28 @@ public class MainActivity extends AppCompatActivity {
         Button addButton = (Button) findViewById(R.id.Add);
         OldList = (ListView) findViewById(R.id.subList);
         subList = new ArrayList<Subscription>();
-        //Subscription newSub2 = new Subscription("netflix", "1990-22-44", "$32","null");
-        //  adapter = new
         adapter = new SubAdapter(getApplicationContext(), R.layout.row_view, subList);
-        //subList.add(newSub2);
-        //Subscription newSub1 = new Subscription("Sub2", "1990-22-44", "$32","null");
-        //subList.add(newSub1);
         OldList.setAdapter(adapter);
 
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //setResult(RESULT_OK);
-                Intent intent = new Intent(view.getContext(), AddToListActivity.class);
-                startActivity(intent);
-                //Intent addIntent = getIntent();
-                //Subscription newSub =   (Subscription) addIntent.getSerializableExtra("newSub");
-                //subList.add(newSub);
+                EditText ETname = findViewById(R.id.enterName);
+                EditText ETdate = findViewById(R.id.enterDate);
+                EditText ETbill = findViewById(R.id.enterBill);
+                EditText ETcomment = findViewById(R.id.enterComment);
 
-                //adapter.notifyDataSetChanged();
-                //saveInFile();
+                String name = ETname.getText().toString();
+                String date = ETdate.getText().toString();
+                String bill = ETbill.getText().toString();
+                String comment = ETcomment.getText().toString();
+
+                Subscription newSub = new Subscription(name, date, bill, comment);
+                subList.add(newSub);
+
+                adapter.notifyDataSetChanged();
+                saveInFile();
+
             }
         });
 
@@ -79,10 +81,10 @@ public class MainActivity extends AppCompatActivity {
     protected  void onStart() {
         super.onStart();
 
-        //loadFromFile();
+        loadFromFile();
 
-        //adapter = new SubAdapter(getApplicationContext(), R.layout.row_view, subList);
-        //OldList.setAdapter(adapter);
+        adapter = new SubAdapter(getApplicationContext(), R.layout.row_view, subList);
+        OldList.setAdapter(adapter);
 
 
     }
