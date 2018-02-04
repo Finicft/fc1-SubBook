@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">fc1-SubBook</string>
+    <string name="Add">Add</string>
+    <string name="EnterName">Enter name</string>
+    <string name="enterDate">Date started: yyyy-mm-dd</string>
+    <string name="enterBill">Monthly charge in CAD</string>
+    <string name="enterComment">Enter comment</string>
+    <string name="OK">OK</string>
+    <string name="SubscriptionList">Subscription List</string>
 </resources>
