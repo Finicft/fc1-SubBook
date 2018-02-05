@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(MainActivity.this, ViewAndEditctivity.class);
+                intent.putExtra("Sub", subList.get(i));
                 startActivity(intent);
             }
         });

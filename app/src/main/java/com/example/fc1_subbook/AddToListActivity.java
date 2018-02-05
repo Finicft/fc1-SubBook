@@ -56,8 +56,6 @@ public class AddToListActivity extends AppCompatActivity {
                 String name = ETname.getText().toString();
                 String date = ETdate.getText().toString();
                 String bill = ETbill.getText().toString();
-                //String to Int conversion from https://www.mkyong.com/java/java-convert-string-to-int/
-                //Integer bill = Integer.parseInt(Sbill);
                 String comment = ETcomment.getText().toString();
 
                 //create new subsciption
