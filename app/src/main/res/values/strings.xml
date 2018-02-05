@@ -7,4 +7,5 @@
     <string name="enterComment">Enter comment</string>
     <string name="OK">OK</string>
     <string name="SubscriptionList">Subscription List</string>
+    <string name="Clear">CLEAR</string>
 </resources>

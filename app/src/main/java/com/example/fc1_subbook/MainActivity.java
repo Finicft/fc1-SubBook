@@ -3,12 +3,9 @@ package com.example.fc1_subbook;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.renderscript.ScriptIntrinsicYuvToRGB;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
@@ -41,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button addButton = (Button) findViewById(R.id.Add);
+        Button clearButton = (Button) findViewById(R.id.clear) ;
         OldList = (ListView) findViewById(R.id.subList);
         subList = new ArrayList<Subscription>();
         adapter = new SubAdapter(getApplicationContext(), R.layout.row_view, subList);
@@ -52,8 +50,18 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, AddToListActivity.class);
                 startActivity(intent);
-                
 
+
+            }
+        });
+
+        clearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setResult(RESULT_OK);
+                subList.clear();
+                adapter.clear();
+                saveInFile();
             }
         });
 
