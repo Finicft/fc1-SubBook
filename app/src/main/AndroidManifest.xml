@@ -9,20 +9,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
-            android:label = "Subscription">
+        <activity
+            android:name=".MainActivity"
+            android:label="Subscription">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddToListActivity"
-            android:parentActivityName="com.example.fc1_subbook.MainActivity" >
+        <activity
+            android:name=".AddToListActivity"
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.fc1_subbook.MainActivity" />
         </activity>
+        <activity android:name=".ViewAndEditctivity"></activity>
     </application>
 
 </manifest>

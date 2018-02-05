@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class AddToListActivity extends AppCompatActivity {
-    private static final String FILENAME = "subs.sav";
+    //private static final String FILENAME = "subs.sav";
     private Subscription newSub ;
     private ArrayList<Subscription> List;
     //private SubAdapter adapter;

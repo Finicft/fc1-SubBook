@@ -8,4 +8,6 @@
     <string name="OK">OK</string>
     <string name="SubscriptionList">Subscription List</string>
     <string name="Clear">CLEAR</string>
+    <string name="title_activity_view_and_edit">ViewAndEditActivity</string>
+    <string name="Edit">EDIT</string>
 </resources>

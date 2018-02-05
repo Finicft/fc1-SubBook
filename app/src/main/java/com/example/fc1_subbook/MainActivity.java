@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -25,7 +26,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private static final String FILENAME = "subs.sav";
-    private ListView OldList;
+    private ListView lv;
     private ArrayList<Subscription> subList;
     private SubAdapter adapter;
     //private Subscription newSub;
@@ -39,10 +40,10 @@ public class MainActivity extends AppCompatActivity {
 
         Button addButton = (Button) findViewById(R.id.Add);
         Button clearButton = (Button) findViewById(R.id.clear) ;
-        OldList = (ListView) findViewById(R.id.subList);
+        lv = (ListView) findViewById(R.id.subList);
         subList = new ArrayList<Subscription>();
         adapter = new SubAdapter(getApplicationContext(), R.layout.row_view, subList);
-        OldList.setAdapter(adapter);
+        lv.setAdapter(adapter);
 
 
         addButton.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +66,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(MainActivity.this, ViewAndEditctivity.class);
+                startActivity(intent);
+            }
+        });
+
+        lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                subList.remove(i);
+                adapter.notifyDataSetChanged();
+                saveInFile();
+                return false;
+            }
+        });
 
 
 
@@ -87,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         }
         saveInFile();
         adapter = new SubAdapter(getApplicationContext(), R.layout.row_view, subList);
-        OldList.setAdapter(adapter);
+        lv.setAdapter(adapter);
 
 
     }
