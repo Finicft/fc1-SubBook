@@ -25,7 +25,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.fc1_subbook.MainActivity" />
         </activity>
-        <activity android:name=".ViewAndEditctivity"></activity>
+        <activity android:name=".ViewAndEditctivity" />
+        <activity android:name=".EditActivity"></activity>
     </application>
 
 </manifest>

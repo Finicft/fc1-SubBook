@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.TextView;
 
 public class ViewAndEditctivity extends AppCompatActivity {
 
@@ -14,20 +14,20 @@ public class ViewAndEditctivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_and_editctivity);
+        setContentView(R.layout.activity_view);
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         Subscription sub = (Subscription) bundle.get("Sub");
 
-        EditText nameView = findViewById(R.id.editName);
-        nameView.setHint(sub.getName());
-        EditText dateView = findViewById(R.id.editDate);
-        dateView.setHint(sub.getDate());
-        EditText billView = findViewById(R.id.editDate);
-        billView.setHint(sub.getMonthlyCharge());
-        EditText commentView = findViewById(R.id.editComment);
-        commentView.setHint(sub.getComment());
+        TextView nameView = findViewById(R.id.textName);
+        nameView.setText("Name:\n" + sub.getName());
+        TextView dateView = findViewById(R.id.textDate);
+        dateView.setText("Date:\n" + sub.getDate());
+        TextView billView = findViewById(R.id.textBill);
+        billView.setText("Monthly Charge:\n" + sub.getMonthlyCharge());
+        TextView commentView = findViewById(R.id.textComment);
+        commentView.setText("Comment:\n" + sub.getComment());
 
         //EditText
 
