@@ -27,12 +27,10 @@
         android:id="@+id/enterDate"
         android:layout_width="0dp"
         android:layout_height="47dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="@string/enterDate"
-        android:inputType="text"
+        android:inputType="date"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/enterName" />
@@ -46,7 +44,7 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="@string/enterBill"
-        android:inputType="text"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -78,7 +76,6 @@
         android:layout_marginBottom="32dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:onClick="AddToList"
         android:text="@string/OK"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -86,7 +83,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enterComment"
         tools:text="@string/OK" />
 
 

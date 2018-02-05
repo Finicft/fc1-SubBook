@@ -10,6 +10,7 @@ import android.widget.Button;
 
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -24,8 +25,11 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.Serializable;
 import java.lang.reflect.Type;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 public class AddToListActivity extends AppCompatActivity {
     //private static final String FILENAME = "subs.sav";
@@ -66,8 +70,11 @@ public class AddToListActivity extends AppCompatActivity {
                 String bill = ETbill.getText().toString();
                 String comment = ETcomment.getText().toString();
 
+                Float Fbill = Float.parseFloat(bill);
+
+
                 //create new subsciption
-                Subscription newSub = new Subscription(name, date, bill, comment);
+                Subscription newSub = new Subscription(name, date, Fbill, comment);
 
 
                 //passing object to another activity from http://hmkcode.com/android-passing-java-object-another-activity/

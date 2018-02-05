@@ -39,7 +39,7 @@ public class SubAdapter extends ArrayAdapter<Subscription> {
         TextView chargeTV = (TextView)convertView.findViewById(R.id.subCharge);
 
         subNameTV.setText(sub.getName());
-        chargeTV.setText(sub.getMonthlyCharge());
+        chargeTV.setText(sub.getMonthlyCharge().toString());
 
         return convertView;
 

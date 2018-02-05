@@ -1,5 +1,6 @@
 package com.example.fc1_subbook;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView lv;
     private ArrayList<Subscription> subList;
     private SubAdapter adapter;
+    private float totalCharge;
 
 
 
@@ -64,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 setResult(RESULT_OK);
                 subList.clear();
                 adapter.clear();
+                calCharge();
                 saveInFile();
             }
         });
@@ -95,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 subList.remove(i);
                 adapter.notifyDataSetChanged();
+                calCharge();
                 saveInFile();
                 return false;
             }
@@ -111,6 +116,8 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
 
         loadFromFile();
+
+        calCharge();
         adapter = new SubAdapter(getApplicationContext(), R.layout.row_view, subList);
         lv.setAdapter(adapter);
 
@@ -160,6 +167,22 @@ public class MainActivity extends AppCompatActivity {
             // TODO Auto-generated catch block
             //throw new RuntimeException();
         }
+    }
+
+    @SuppressLint("DefaultLocale")
+    public void calCharge(){
+        totalCharge = 0;
+
+        for (int i = 0; i < subList.size(); i++ ){
+            Float temp;
+            temp = subList.get(i).getMonthlyCharge();
+            totalCharge += (temp);
+        }
+
+        TextView charge = (TextView)findViewById(R.id.totalCharge);
+        String Scharge;
+        Scharge = String.format("%.2f", totalCharge);
+        charge.setText(String.format("Total charge: $%s", Scharge));
     }
 
 

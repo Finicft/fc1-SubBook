@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -47,7 +48,7 @@ public class ViewAndEditctivity extends AppCompatActivity {
         assert sub != null;
         ETname.setText(sub.getName(), TextView.BufferType.EDITABLE);
         ETdate.setText(sub.getDate(), TextView.BufferType.EDITABLE);
-        ETbill.setText(sub.getMonthlyCharge(), TextView.BufferType.EDITABLE);
+        ETbill.setText(sub.getMonthlyCharge().toString(), TextView.BufferType.EDITABLE);
         ETcomment.setText(sub.getComment(), TextView.BufferType.EDITABLE);
 
         Button doneButton = (Button)findViewById(R.id.done);
@@ -62,7 +63,9 @@ public class ViewAndEditctivity extends AppCompatActivity {
                 String bill = ETbill.getText().toString();
                 String comment = ETcomment.getText().toString();
 
-                Subscription updatedSub = new Subscription(name, date, bill, comment);
+                Float Fbill = Float.parseFloat(bill);
+
+                Subscription updatedSub = new Subscription(name, date, Fbill, comment);
 
 
                 //saveInFile();

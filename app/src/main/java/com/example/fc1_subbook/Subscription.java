@@ -10,10 +10,10 @@ import java.util.Date;
 public class Subscription implements Serializable{
     private String name;
     private String date;
-    private String monthlyCharge;
+    private Float monthlyCharge;
     private String comment;
 
-    public Subscription(String name, String date, String monthlyCharge, String comment)  {
+    public Subscription(String name, String date, Float monthlyCharge, String comment)  {
         if (name.length() > 20){
             throw new ArithmeticException("Name is too long.");
         }
@@ -45,16 +45,16 @@ public class Subscription implements Serializable{
         return date;
     }
 
-    public void setDate(String date) {
+        public void setDate(String date) {
         this.date = date;
     }
 
-    public String getMonthlyCharge(){
+    public Float getMonthlyCharge(){
 
         return monthlyCharge;
     }
 
-    public void setMonthlyCharge(String monthlyCharge) {
+    public void setMonthlyCharge(Float monthlyCharge) {
 
         this.monthlyCharge = monthlyCharge;
     }
@@ -72,13 +72,6 @@ public class Subscription implements Serializable{
         }
     }
 
-    public void update(String name, String date, String monthlyCharge, String comment) {
-        this.name = name;
-        this.date = date;
-        this.monthlyCharge = monthlyCharge;
-        this.comment = comment;
-
-    }
 
 }
 
