@@ -112,7 +112,7 @@ public class Subscription implements Serializable{
 
     /**
      * Setter of comment
-     * @param comment new comment 
+     * @param comment new comment
      * @throws ArithmeticException
      */
     public void setComment(String comment) throws ArithmeticException {
