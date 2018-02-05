@@ -1,0 +1,4 @@
+#Mon Feb 05 11:26:57 MST 2018
+base.0=/Users/user/AndroidStudioProjects/fc1SubBook/app/build/intermediates/transforms/dexMerger/debug/62
+path.0=classes.dex
+renamed.0=classes.dex
