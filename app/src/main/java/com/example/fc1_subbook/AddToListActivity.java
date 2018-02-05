@@ -41,7 +41,6 @@ import java.util.ArrayList;
 public class AddToListActivity extends AppCompatActivity {
 
     private Subscription newSub ;
-    private ArrayList<Subscription> List;
     private static final String FILENAME = "subs.sav";
     private ArrayList<Subscription> subList;
 

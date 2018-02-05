@@ -5,31 +5,28 @@
     build-mode="COLD"
     density="420dpi"
     format="10"
-    ir-eligibility="FIELD_TYPE_CHANGE"
+    ir-eligibility="FIELD_REMOVED"
     plugin-version="3.0.1"
-    timestamp="1517865843998"
+    timestamp="1517870304748"
     token="-2066771605139661354"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="776" />
+        duration="393" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="78" />
+        duration="65" />
     <task
         name="verifier"
-        duration="11" />
+        duration="2" />
 
     <artifact
         location="/Users/user/AndroidStudioProjects/fc1SubBook/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
         type="SPLIT" />
-    <artifact
-        location="/Users/user/AndroidStudioProjects/fc1SubBook/app/build/outputs/apk/debug/app-debug.apk"
-        type="SPLIT_MAIN" />
 
     <build
         build-mode="FULL"
@@ -78,11 +75,17 @@
         timestamp="1517865843998"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="/Users/user/AndroidStudioProjects/fc1SubBook/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
-            type="SPLIT" />
-        <artifact
             location="/Users/user/AndroidStudioProjects/fc1SubBook/app/build/outputs/apk/debug/app-debug.apk"
             type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="FIELD_REMOVED"
+        timestamp="1517870304748"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="/Users/user/AndroidStudioProjects/fc1SubBook/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
+            type="SPLIT" />
     </build>
 
 </instant-run>
