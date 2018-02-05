@@ -10,4 +10,5 @@
     <string name="Clear">CLEAR</string>
     <string name="title_activity_view_and_edit">ViewAndEditActivity</string>
     <string name="Edit">EDIT</string>
+    <string name="HowToDelete" >Hold on to the item to delete</string>
 </resources>

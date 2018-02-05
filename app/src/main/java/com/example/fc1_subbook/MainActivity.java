@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //On long click from https://developer.android.com/reference/android/widget/AdapterView.OnItemLongClickListener.html
         lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
