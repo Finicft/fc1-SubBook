@@ -12,4 +12,5 @@
     <string name="Edit">EDIT</string>
     <string name="HowToDelete">Hold on to the item to delete</string>
     <string name="done">DONE</string>
+    <string name="back">BACK</string>
 </resources>

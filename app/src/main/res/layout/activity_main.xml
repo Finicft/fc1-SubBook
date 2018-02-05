@@ -18,7 +18,9 @@
         app:layout_constraintBottom_toTopOf="@+id/DeleteMessage"
         app:layout_constraintEnd_toStartOf="@+id/clear"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="24dp" />
 
     <ListView
         android:id="@+id/subList"

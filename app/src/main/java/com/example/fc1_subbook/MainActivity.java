@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
     private ListView lv;
     private ArrayList<Subscription> subList;
     private SubAdapter adapter;
-    //private Subscription newSub;
 
 
 
@@ -52,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, AddToListActivity.class);
                 startActivity(intent);
 
+                adapter.notifyDataSetChanged();
+
+
 
             }
         });
@@ -69,10 +71,22 @@ public class MainActivity extends AppCompatActivity {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(MainActivity.this, ViewAndEditctivity.class);
-                intent.putExtra("Sub", subList.get(i));
-                startActivity(intent);
+                //View and Edit intent
+                Intent VEintent = new Intent(MainActivity.this, ViewAndEditctivity.class);
+                VEintent.putExtra("sub", subList.get(i));
+
+                startActivity(VEintent);
+
+                /*Intent editIntent = getIntent();
+                Bundle bundle = editIntent.getExtras();
+                assert bundle != null;
+                Subscription sub = (Subscription) bundle.getSerializable("updatedSub");
+                subList.set(i, sub);
+                adapter.notifyDataSetChanged();
+                saveInFile();*/
+
             }
+
         });
 
         //On long click from https://developer.android.com/reference/android/widget/AdapterView.OnItemLongClickListener.html
@@ -97,18 +111,8 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
 
         loadFromFile();
-        Intent addIntent = getIntent();
-        Bundle bundle = addIntent.getExtras();
-        if(bundle != null){
-            Subscription newSub = (Subscription) bundle.get("newSub");
-            subList.add(newSub);
-            adapter.notifyDataSetChanged();
-
-        }
-        saveInFile();
         adapter = new SubAdapter(getApplicationContext(), R.layout.row_view, subList);
         lv.setAdapter(adapter);
-
 
     }
 
@@ -129,7 +133,8 @@ public class MainActivity extends AppCompatActivity {
             // TODO Auto-generated catch block
             subList = new ArrayList<Subscription>();
         }catch (IOException e) {
-            throw new RuntimeException();
+            e.printStackTrace();
+            //throw new RuntimeException();
         }
     }
 
@@ -147,11 +152,13 @@ public class MainActivity extends AppCompatActivity {
             out.flush();
 
         } catch (FileNotFoundException e) {
+            e.printStackTrace();
             // TODO Auto-generated catch block
-            throw new RuntimeException();
+            //throw new RuntimeException();
         } catch (IOException e) {
+            e.printStackTrace();
             // TODO Auto-generated catch block
-            throw new RuntimeException();
+            //throw new RuntimeException();
         }
     }
 

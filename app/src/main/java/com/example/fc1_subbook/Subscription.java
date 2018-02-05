@@ -71,5 +71,14 @@ public class Subscription implements Serializable{
             throw new ArithmeticException();
         }
     }
+
+    public void update(String name, String date, String monthlyCharge, String comment) {
+        this.name = name;
+        this.date = date;
+        this.monthlyCharge = monthlyCharge;
+        this.comment = comment;
+
+    }
+
 }
 
