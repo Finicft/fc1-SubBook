@@ -1,3 +1,8 @@
+/*
+ * Copyright © 2018 Fangting Chen. CMPUT301. University of Alberta - All Rights Reserved.You may use, distribute, or modify this code under terms and conditions of the Code of Student Behaviour at University of Alberta. You can find a copy of the license in this project. Otherwise please contact fc1@ualberta.ca
+ *
+ */
+
 package com.example.fc1_subbook;
 
 import android.annotation.SuppressLint;
@@ -25,6 +30,15 @@ import java.io.OutputStreamWriter;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
+/**
+ * Represent the Main Activity
+ *
+ * @author fc1
+ * @see Subscription
+ * @see AddToListActivity
+ * @see ViewAndEditctivity
+ * @see SubAdapter
+ */
 public class MainActivity extends AppCompatActivity {
 
     private static final String FILENAME = "subs.sav";
@@ -34,7 +48,11 @@ public class MainActivity extends AppCompatActivity {
     private float totalCharge;
 
 
-
+    /**
+     * Called when the activity is first created
+     *
+     * @param savedInstanceState state of an instance
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +67,11 @@ public class MainActivity extends AppCompatActivity {
 
 
         addButton.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Called when add button is clicked
+             *
+             * @param view view of the button
+             */
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, AddToListActivity.class);
@@ -62,6 +85,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         clearButton.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Called when clear button is clicked
+             *
+             * @param view view of the button
+             */
             @Override
             public void onClick(View view) {
                 setResult(RESULT_OK);
@@ -73,6 +101,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            /**
+             * Called when the item is clicked
+             * @param adapterView adapter view of the click
+             * @param view view within adapter view
+             * @param i index of veiw in adapter
+             * @param l row id of the item being clicked
+             */
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 //View and Edit intent
@@ -81,20 +117,22 @@ public class MainActivity extends AppCompatActivity {
 
                 startActivity(VEintent);
 
-                /*Intent editIntent = getIntent();
-                Bundle bundle = editIntent.getExtras();
-                assert bundle != null;
-                Subscription sub = (Subscription) bundle.getSerializable("updatedSub");
-                subList.set(i, sub);
-                adapter.notifyDataSetChanged();
-                saveInFile();*/
-
             }
 
         });
 
         //On long click from https://developer.android.com/reference/android/widget/AdapterView.OnItemLongClickListener.html
         lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
+            /**
+             * Called when the item is long clicked
+             *
+             * @param adapterView adapter view of the click
+             * @param view view within adapter view
+             * @param i index of veiw in adapter
+             * @param l row id of the item being clicked
+             * @return boolean indicating the long click
+             */
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 subList.remove(i);
@@ -110,7 +148,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+    /**
+     * Called when the activity starts
+     */
     @Override
     protected  void onStart() {
         super.onStart();
@@ -124,6 +164,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Loads from the file
+     */
     private void loadFromFile() {
 
         try {
@@ -139,9 +182,6 @@ public class MainActivity extends AppCompatActivity {
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
             subList = new ArrayList<Subscription>();
-        }catch (IOException e) {
-            e.printStackTrace();
-            //throw new RuntimeException();
         }
     }
 
@@ -169,6 +209,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Calculates the total charge of subscriptions in the list
+     */
     @SuppressLint("DefaultLocale")
     public void calCharge(){
         totalCharge = 0;

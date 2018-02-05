@@ -1,3 +1,11 @@
+/*
+ * Copyright © 2018 Fangting Chen. CMPUT301. University of Alberta - All Rights Reserved.
+ * You may use, distribute, or modify this code under terms and conditions of
+ * the Code of Student Behaviour at University of Alberta.
+ * You can find a copy of the license in this project. Otherwise please contact fc1@ualberta.ca
+ *
+ */
+
 package com.example.fc1_subbook;
 
 import android.content.Context;
@@ -5,12 +13,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 
 import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -23,23 +28,29 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.io.Serializable;
 import java.lang.reflect.Type;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
+
+/**
+ * Represent the activity where a subscription is added to the list
+ *
+ * @author fc1
+ * @see MainActivity
+ */
 
 public class AddToListActivity extends AppCompatActivity {
-    //private static final String FILENAME = "subs.sav";
+
     private Subscription newSub ;
     private ArrayList<Subscription> List;
     private static final String FILENAME = "subs.sav";
     private ArrayList<Subscription> subList;
-    //private SubAdapter adapter;
 
 
+    /**
+     * Called when the acvitity is first created
+     *
+     * @param savedInstanceState state of the instance
+     */
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,14 +60,18 @@ public class AddToListActivity extends AppCompatActivity {
         loadFromFile();
 
         Button OkButton = (Button) findViewById(R.id.ok);
-        //adapter = new SubAdapter(getApplicationContext(), R.layout.row_view, List);
 
         OkButton.setOnClickListener(new View.OnClickListener() {
 
+            /**
+             * Called when ok button is clicked
+             *
+             * @param v view of the button
+             */
             //https://stackoverflow.com/questions/11460896/button-to-go-back-to-mainactivity
             public void onClick(View v) {
-                Intent intent = new Intent(AddToListActivity.this, MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                Intent mainIntent = new Intent(AddToListActivity.this, MainActivity.class);
+                mainIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
                 //get info of the new subscription
                 EditText ETname = findViewById(R.id.enterName);
@@ -64,26 +79,22 @@ public class AddToListActivity extends AppCompatActivity {
                 EditText ETbill = findViewById(R.id.enterBill);
                 EditText ETcomment = findViewById(R.id.enterComment);
 
-
+                //Convert info into string
                 String name = ETname.getText().toString();
                 String date = ETdate.getText().toString();
                 String bill = ETbill.getText().toString();
                 String comment = ETcomment.getText().toString();
-
+                //Convert bill into float type
                 Float Fbill = Float.parseFloat(bill);
 
 
                 //create new subsciption
                 Subscription newSub = new Subscription(name, date, Fbill, comment);
 
-
-                //passing object to another activity from http://hmkcode.com/android-passing-java-object-another-activity/
-                //intent.putExtra("newSub", newSub);
                 subList.add(newSub);
                 saveInFile();
 
-
-                startActivity(intent);
+                startActivity(mainIntent);
             }
 
         });
@@ -92,6 +103,10 @@ public class AddToListActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Loads from the file
+     *
+     */
     private void loadFromFile() {
 
         try {
@@ -107,9 +122,6 @@ public class AddToListActivity extends AppCompatActivity {
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
             subList = new ArrayList<Subscription>();
-        }catch (IOException e) {
-            e.printStackTrace();
-            //throw new RuntimeException();
         }
     }
 
